@@ -36,8 +36,9 @@ public class ContactRepository {
         }
         contacts.stream()
                 .filter(c ->    c.getName().equals(contact.getName()) &&
-                                c.getPhoneNumber().equals(contact.getPhoneNumber()) &&
-                                c.getEmail().equals(contact.getEmail())
+                                c.getEmail().equals(contact.getEmail())&&
+                                c.getPhoneNumber().equals(contact.getPhoneNumber())
+
                 )
                 .findAny()
                 .ifPresent(c -> {

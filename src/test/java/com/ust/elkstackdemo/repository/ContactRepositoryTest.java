@@ -158,6 +158,28 @@ class ContactRepositoryTest {
     }
 
     @Test
+    @DisplayName("Additional. getContactByPhoneNumber_WithGreaterThan10Digits")
+    void getContactByPhoneNumber_WithGreaterThan10Digits()
+    {
+        IllegalArgumentException thrown=assertThrows(IllegalArgumentException.class,()->
+        {
+            contactRepository.getContactsByPhoneNumber("123456789001");
+        });
+        assertEquals("Invalid phone number",thrown.getMessage());
+    }
+
+    @Test
+    @DisplayName("Additional. getContactByPhoneNumber_WithNullDigits")
+    void getContactByPhoneNumber_WithNullDigits()
+    {
+        IllegalArgumentException thrown=assertThrows(IllegalArgumentException.class,()->
+        {
+            contactRepository.getContactsByPhoneNumber(null);
+        });
+        assertEquals("Invalid phone number",thrown.getMessage());
+    }
+
+    @Test
     @DisplayName("11. getContactsByName_WithExistingName_ShouldReturnContact")
     void getContactsByName_WithExistingName_ShouldReturnContact() {
         contactRepository.addContact(validContact);
